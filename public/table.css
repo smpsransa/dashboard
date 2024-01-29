@@ -1,0 +1,19 @@
+table {
+    white-space: nowrap;
+    width: 100%;
+}
+
+td {
+    border: 1px solid black;
+}
+
+td {
+    max-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+td.fit {
+    width: 0;
+    min-width: fit-content;
+}
