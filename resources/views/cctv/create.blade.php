@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" style="display: flex; justify-content: space-between;">
-                        <a class="btn btn-success" href="{{ route('cctv.index') }}">Back</a>
+                        <a class="btn btn-secondary" href="{{ route('cctv.index') }}">Back</a>
                         <span style="display: inline-flex; align-items: center;">{{ __('Create CCTV') }}</span>
                     </div>
                     <div class="card-body">
