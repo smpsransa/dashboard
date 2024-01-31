@@ -12,6 +12,7 @@
                     <div class="card-body">
                         <form action="{{ route('wifi.update', $wifi->id) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="py-2 col-xs-12 col-sm-12 col-md-12">
                                     <div class="form-group">
