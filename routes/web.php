@@ -30,3 +30,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('cctv', CctvController::class);
 Route::resource('wifi', WifiController::class);
 Route::resource('service', ServiceController::class);
+
+Route::get('/hotspot', [App\Http\Controllers\HotspotController::class, 'index'])->name('hotspot');
