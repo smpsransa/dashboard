@@ -7,10 +7,10 @@ use Illuminate\Http\Request;
 
 class WifiController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    public function __construct()
+    {
+        $this->middleware('auth')->except('index');
+    }
 
     public function index()
     {
