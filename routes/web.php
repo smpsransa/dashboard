@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CctvController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\WifiController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('cctv', CctvController::class);
 Route::resource('wifi', WifiController::class);
+Route::resource('service', ServiceController::class);

@@ -42,6 +42,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('wifi.index') }}">{{ __('Wifi') }}</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('service.index') }}">{{ __('Layanan Digital') }}</a>
+                        </li>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

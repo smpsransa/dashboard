@@ -22,7 +22,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             CctvSeeder::class,
-            WifiSeeder::class
+            WifiSeeder::class,
+            ServiceSeeder::class
         ]);
     }
 }
