@@ -1,0 +1,10 @@
+# https://gist.github.com/bladeSk/3666d04964e4de9c263776ba51f33a18
+RewriteEngine on
+
+# serve existing files in the /public folder as if they were in /
+RewriteCond [[your path]]/public%{REQUEST_URI} -f
+RewriteRule (.+) /public/$1 [L]
+
+# route everything else to /public/index.php
+RewriteRule ^ /public/index.php [L]
+
