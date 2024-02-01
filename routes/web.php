@@ -32,3 +32,4 @@ Route::resource('wifi', WifiController::class);
 Route::resource('service', ServiceController::class);
 
 Route::get('/hotspot', [App\Http\Controllers\HotspotController::class, 'index'])->name('hotspot');
+Route::get('/hotspot/user', [App\Http\Controllers\HotspotController::class, 'user'])->name('hotspot.user');

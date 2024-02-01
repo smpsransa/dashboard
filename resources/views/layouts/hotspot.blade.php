@@ -85,7 +85,7 @@
         <div class="h-100 d-flex flex-row">
             <sidebar class="w-20">
                 <ul>
-                    <li><a href="">user</a></li>
+                    <li><a href="{{route('hotspot.user')}}">user</a></li>
                 </ul>
             </sidebar>
             <main class="mt-4 w-100">
