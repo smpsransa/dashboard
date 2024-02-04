@@ -13,3 +13,52 @@ legend.scheduler-border {
     padding: 0 10px; /* To give a bit of padding on the left and right */
     border-bottom: none;
 }
+
+.tableFixHead {
+    overflow-y: auto;
+    height: 100%;
+}
+
+.tableFixHead thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Just common table stuff. Really. */
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    vertical-align: top;
+    text-align: left;
+    border-collapse: collapse;
+    padding: 5px;
+}
+
+th {
+    text-align: center;
+    background: #eee;
+}
+
+td:first-child {
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+td.stretch {
+    max-width: 0;
+    word-wrap: break-word;
+}
+
+td.fit {
+    width: 0;
+    min-width: fit-content;
+    white-space: nowrap;
+}

@@ -33,16 +33,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cctv.index') }}">{{ __('CCTV') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('cctv') }}" href="{{ route('cctv.index') }}">{{ __('CCTV') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('wifi.index') }}">{{ __('Wifi') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('wifi') }}" href="{{ route('wifi.index') }}">{{ __('Wifi') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('hotspot') }}">{{ __('Hotspot') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('service') }}" href="{{ route('service.index') }}">{{ __('Layanan Digital') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('service.index') }}">{{ __('Layanan Digital') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('hotspot') }}" href="{{ route('hotspot.index') }}">{{ __('Hotspot') }}</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
@@ -82,8 +82,8 @@
                 </div>
             </div>
         </nav>
-        <div class="h-100 d-flex flex-row">
-            <main class="mt-4 w-100">
+        <div class="h-100 overflow-hidden d-flex flex-row">
+            <main class="p-3 w-100">
                 @yield('content')
             </main>
         </div>

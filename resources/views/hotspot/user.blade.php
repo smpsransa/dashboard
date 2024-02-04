@@ -1,5 +1,5 @@
-@extends('layouts.app')
-@vite(['resources/css/table.css'])
+@extends('layouts.hotspot')
+
 @section('content')
     <div class="container">
         <div class="row justify-content-center">

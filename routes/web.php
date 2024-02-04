@@ -3,6 +3,7 @@
 use App\Http\Controllers\CctvController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\WifiController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,5 +32,7 @@ Route::resource('cctv', CctvController::class);
 Route::resource('wifi', WifiController::class);
 Route::resource('service', ServiceController::class);
 
-Route::get('/hotspot', [App\Http\Controllers\HotspotController::class, 'index'])->name('hotspot');
-Route::get('/hotspot/user', [App\Http\Controllers\HotspotController::class, 'user'])->name('hotspot.user');
+Route::get('/hotspot', [App\Http\Controllers\HotspotController::class, 'index'])->name('hotspot.index');
+Route::get('/hotspot/user', [App\Http\Controllers\HotspotController::class, 'hotspotUser'])->name('hotspot.user');
+
+Route::get('/hotspot/setup', [App\Http\Controllers\HotspotController::class, 'hotspotSetup'])->middleware('auth')->name('hotspot.setup');

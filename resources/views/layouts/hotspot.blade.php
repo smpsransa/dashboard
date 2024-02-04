@@ -33,16 +33,16 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('cctv.index') }}">{{ __('CCTV') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('cctv') }}" href="{{ route('cctv.index') }}">{{ __('CCTV') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('wifi.index') }}">{{ __('Wifi') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('wifi') }}" href="{{ route('wifi.index') }}">{{ __('Wifi') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('hotspot') }}">{{ __('Hotspot') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('service') }}" href="{{ route('service.index') }}">{{ __('Layanan Digital') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('service.index') }}">{{ __('Layanan Digital') }}</a>
+                            <a class="nav-link {{ AnyFunc::activeMenu('hotspot') }}" href="{{ route('hotspot.index') }}">{{ __('Hotspot') }}</a>
                         </li>
                     </ul>
                     <!-- Right Side Of Navbar -->
@@ -82,13 +82,58 @@
                 </div>
             </div>
         </nav>
-        <div class="h-100 d-flex flex-row">
-            <sidebar class="w-20">
-                <ul>
-                    <li><a href="{{route('hotspot.user')}}">user</a></li>
+        <div class="h-100 overflow-hidden d-flex flex-row">
+            <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 160px;">
+                <ul class="nav nav-pills flex-column mb-auto">
+                    <li>
+                        <a href="{{ route('hotspot.index') }}" class="nav-link {{ AnyFunc::sideMenu('hotspot', 'link-dark') }}">
+                            <i class="bi bi-speedometer2"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <i class="bi bi-table"></i>
+                            Orders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark">
+                            <i class="bi bi-grid"></i>
+                            Products
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link link-dark ">
+                            <i class="bi bi-people-fill"></i>
+                            Customers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('hotspot.setup') }}" class="nav-link {{ AnyFunc::sideMenu('hotspot/setup', 'link-dark') }}">
+                            <i class="bi bi-sliders"></i>
+                            Setup
+                        </a>
+                    </li>
                 </ul>
-            </sidebar>
-            <main class="mt-4 w-100">
+                <!-- <hr>
+                <div class="dropdown">
+                    <a href="#" class="d-flex align-items-center link-dark text-decoration-none dropdown-toggle" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>mdo</strong>
+                    </a>
+                    <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser2">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div> -->
+            </div>
+            <main class="p-3 w-100">
                 @yield('content')
             </main>
         </div>
