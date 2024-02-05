@@ -61,7 +61,7 @@
                     </div>
                     <div class="form-group">
                         <label for="userman_passw">pass</label>
-                        <input type="text" class="form-control" id="userman_passw" placeholder="" value="{{ $customer[0]['password'] }}">
+                        <input type="password" class="form-control" id="userman_passw" placeholder="" value="{{ $customer[0]['password'] }}">
                     </div>
                     <div class="form-group">
                         <label for="userman_info">Identity</label>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="form-group">
                         <label for="userman_secret">secret</label>
-                        <input type="text" class="form-control" id="userman_secret" placeholder="" value="{{ $router[0]['shared-secret'] }}">
+                        <input type="password" class="form-control" id="userman_secret" placeholder="" value="{{ $router[0]['shared-secret'] }}">
                     </div>
 
                 </div>
@@ -103,24 +103,25 @@
             <div class="card-header bg-transparent border-success">4. Hotspot</div>
             <div class="card-body text-success">
                 <div class="form-group">
-                    <label for="ros_host">host</label>
-                    <input type="text" class="form-control" id="ros_host" placeholder="192.168.88.1" value="{{ $ros->host }}">
+                    <label for="hs_name">name</label>
+                    <input type="text" class="form-control" id="hs_name" placeholder="hotspot1" value="{{ $hs['name'] }}">
                 </div>
                 <div class="form-group">
-                    <label for="ros_user">user</label>
-                    <input type="text" class="form-control" id="ros_user" placeholder="admin" value="{{ $ros->user }}">
+                    <label for="hs_iface">iface</label>
+                    <input type="text" class="form-control" id="hs_iface" placeholder="etherX" value="{{ $hs['interface'] }}">
                 </div>
                 <div class="form-group">
-                    <label for="ros_pass">pass</label>
-                    <input type="password" class="form-control" id="ros_pass" placeholder="" value="{{ $ros->pass }}">
+                    <label for="hs_pool">pool</label>
+                    <input type="password" class="form-control" id="hs_pool" placeholder="hs-pool-1" value="{{ $hs['address-pool'] }}">
                 </div>
                 <div class="form-group">
-                    <label for="ros_port">port</label>
-                    <input type="email" class="form-control" id="ros_port" placeholder="8728" value="{{ $ros->port }}">
+                    <label for="hs_profile">profile</label>
+                    <input type="email" class="form-control" id="hs_profile" placeholder="hsprof1" value="{{ $hs['profile'] }}">
                 </div>
             </div>
             <div class="card-footer bg-transparent border-success d-flex justify-content-end gap-2">
                 <button class="btn btn-danger" onclick="alert('danger!!')">reset</button>
+                <button class="btn btn-warning" onclick="alert('danger!!')">disable</button>
                 <button class="btn btn-success">Update</button>
             </div>
         </div>

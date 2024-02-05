@@ -9,22 +9,18 @@ use RouterOS\Query;
 
 class HotspotController extends Controller
 {
-    private $client, $hotspot, $customer, $router;
+    private $base, $client, $hotspot;
 
     function __construct()
     {
         $ros_version = env('ROS_VERSION', 6);
-        $base = $ros_version == 6 ? '/tool/' : '/';
+        $this->base = $ros_version == 6 ? '/tool/' : '/';
 
-        $hotspotQuery = new Query($base . 'user-manager/user/print');
-        $customerQuery = new Query($base . 'user-manager/customer/print');
-        $routerQuery = new Query($base . 'user-manager/router/print');
+        $hotspotQuery = new Query($this->base . 'user-manager/user/print');
 
 
         $this->client = new \RouterOS\Client(Config::get('routeros-api'));
         $this->hotspot = $this->client->query($hotspotQuery)->read();
-        $this->customer = $this->client->query($customerQuery)->read();
-        $this->router = $this->client->query($routerQuery)->read();
     }
 
     public function index()
@@ -76,6 +72,9 @@ class HotspotController extends Controller
 
     public function hotspotSetup()
     {
+        $customerQuery = new Query($this->base . 'user-manager/customer/print');
+        $routerQuery = new Query($this->base . 'user-manager/router/print');
+        $hotspotQuery = new Query('/ip/hotspot/print');
         // $query = new Query('/user-manager/user/print');
 
         // try {
@@ -97,13 +96,15 @@ class HotspotController extends Controller
         // dd($response[0]);
 
         $ros = (object)Config::get('routeros-api');
-        $customer = $this->customer;
-        $router = $this->router;
+        $customer = $this->client->query($customerQuery)->read();
+        $router = $this->client->query($routerQuery)->read();
+        $hs = $this->client->query($hotspotQuery)->read()[0];
+
         $response = [
             1 => 'ok'
         ];
 
-        // dd($customer);
-        return view('hotspot.setup.index', compact('response', 'ros', 'customer', 'router'));
+        // dd($hs['address-pool']);
+        return view('hotspot.setup.index', compact('response', 'ros', 'customer', 'router', 'hs'));
     }
 }
