@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Redirect;
 use RouterOS\Query;
 
 class HotspotController extends Controller
@@ -19,7 +20,11 @@ class HotspotController extends Controller
         $hotspotQuery = new Query($this->base . 'user-manager/user/print');
 
 
-        $this->client = new \RouterOS\Client(Config::get('routeros-api'));
+        try {
+            $this->client = new \RouterOS\Client(Config::get('routeros-api'));
+        } catch (\Exception $e) {
+            Redirect::to('/')->send();
+        }
         $this->hotspot = $this->client->query($hotspotQuery)->read();
     }
 
@@ -98,13 +103,13 @@ class HotspotController extends Controller
         $ros = (object)Config::get('routeros-api');
         $customer = $this->client->query($customerQuery)->read();
         $router = $this->client->query($routerQuery)->read();
-        $hs = $this->client->query($hotspotQuery)->read()[0];
+        $hs = (object)$this->client->query($hotspotQuery)->read()[0];
 
         $response = [
             1 => 'ok'
         ];
 
-        // dd($hs['address-pool']);
+        // dd($hs);
         return view('hotspot.setup.index', compact('response', 'ros', 'customer', 'router', 'hs'));
     }
 }
