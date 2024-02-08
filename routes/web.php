@@ -31,8 +31,12 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('cctv', CctvController::class);
 Route::resource('wifi', WifiController::class);
 Route::resource('service', ServiceController::class);
+Route::get('/error', [App\Http\Controllers\HomeController::class, 'error'])->name('router.error');
 
 Route::get('/hotspot', [App\Http\Controllers\HotspotController::class, 'index'])->name('hotspot.index');
-Route::get('/hotspot/user', [App\Http\Controllers\HotspotController::class, 'hotspotUser'])->name('hotspot.user');
+Route::get('/hotspot/user', [App\Http\Controllers\HotspotController::class, 'user'])->name('hotspot.user');
 
-Route::get('/hotspot/setup', [App\Http\Controllers\HotspotController::class, 'hotspotSetup'])->middleware('auth')->name('hotspot.setup');
+Route::get('/setup', [App\Http\Controllers\SetupController::class, 'index'])->middleware('auth')->name('setup.index');
+Route::get('/setup/api', [App\Http\Controllers\SetupController::class, 'api'])->middleware('auth')->name('setup.api');
+Route::get('/setup/hs', [App\Http\Controllers\SetupController::class, 'hs'])->middleware('auth')->name('setup.hs');
+Route::get('/setup/userman', [App\Http\Controllers\SetupController::class, 'userman'])->middleware('auth')->name('setup.userman');

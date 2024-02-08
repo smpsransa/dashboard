@@ -16,6 +16,16 @@ class AnyFunction
         return $active;
     }
 
+    public static function subMenu($uri = '', $style = ''): string
+    {
+        $active = false;
+
+        if (explode('/', Request::path())[0] == $uri || Request::is(Request::segment(1) . '/' . $uri . '/*') || Request::is(Request::segment(1) . '/' . $uri) || Request::is($uri)) {
+            $active = true;
+        }
+        return $active;
+    }
+
     public static function sideMenu($uri = '', $style = ''): string
     {
 
