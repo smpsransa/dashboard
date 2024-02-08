@@ -40,3 +40,5 @@ Route::get('/setup', [App\Http\Controllers\SetupController::class, 'index'])->mi
 Route::get('/setup/api', [App\Http\Controllers\SetupController::class, 'api'])->middleware('auth')->name('setup.api');
 Route::get('/setup/hs', [App\Http\Controllers\SetupController::class, 'hs'])->middleware('auth')->name('setup.hs');
 Route::get('/setup/userman', [App\Http\Controllers\SetupController::class, 'userman'])->middleware('auth')->name('setup.userman');
+
+Route::get('/class', [App\Http\Controllers\DbClassController::class, 'index'])->name('db_class.index');
