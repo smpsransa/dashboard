@@ -3,20 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FileImportRequest;
-use App\Imports\DbStudentsImport;
-use App\Models\DbStudent;
+use App\Imports\DbTeachersImport;
+use App\Models\DbTeacher;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 
-class DbStudentController extends Controller
+class DbTeacherController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $students = DbStudent::latest()->get();
-        return view('database.students', compact('students'));
+        $teachers = DbTeacher::latest()->get();
+        // dd($teachers[0][2]);
+        return view('database.teachers', compact('teachers'));
     }
 
     /**
@@ -53,8 +54,10 @@ class DbStudentController extends Controller
 
     public function fileImport(FileImportRequest $request)
     {
+        // $collection = Excel::toCollection(new DbTeachersImport($request->file->extension()), $request->file('file'));
+        // dd($collection);
         try {
-            Excel::import(new DbStudentsImport($request->file->extension()), $request->file('file')->store('temp'));
+            Excel::import(new DbTeachersImport($request->file->extension()), $request->file('file')->store('temp'));
             return back();
         } catch (\Error $ex) {
             throw new \Exception('Error:' . $ex->getMessage());

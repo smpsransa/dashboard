@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use SoulDoit\SetEnv\Env;
+
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -29,8 +31,15 @@ class SetupController extends Controller
 
     public function api()
     {
-        $ros = (object)Config::get('routeros-api');
-
+        // about app config -> to api address
+        $ros = (object)[
+            'host' => env('ROS_HOST', '192.168.88.1'), // Address of Mikrotik RouterOS
+            'user' => env('ROS_USER', 'admin'),        // Username
+            'pass' => env('ROS_PASS', null),           // Password
+            'port' => (int)env('ROS_PORT', 8728),           // RouterOS API port number for access (if not set use default or default with SSL if SSL enabled
+            'version' => (int)env('ROS_VERSION', 6),
+        ];
+        // dd($ros);
         return view('hotspot.setup.api', compact('ros'));
     }
 

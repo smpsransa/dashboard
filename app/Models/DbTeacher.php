@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DbStudent extends Model
+class DbTeacher extends Model
 {
     use HasFactory;
-    protected $fillable = ['class_id', 'name', 'gender', 'nisn', 'born', 'birth', 'nik', 'address', 'father', 'mother'];
+    protected $fillable = ['class_id', 'name', 'gender', 'nip', 'born', 'birth', 'address', 'status', 'assign'];
 
-    protected $casts = [
-        'birth' => 'datetime:d/m/Y',
-    ];
-    
     public function class()
     {
         return $this->belongsTo(DbClass::class);

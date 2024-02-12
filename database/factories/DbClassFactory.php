@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\DbKelas>
  */
-class DbKelasFactory extends Factory
+class DbClassFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,7 @@ class DbKelasFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => $this->faker->sentence(1),
         ];
     }
 }

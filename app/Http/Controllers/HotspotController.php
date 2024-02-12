@@ -17,7 +17,7 @@ class HotspotController extends Controller
         try {
             $this->client = new \RouterOS\Client(Config::get('routeros-api'));
         } catch (\Exception $e) {
-            Redirect::to('/hotspot/error')->send();
+            Redirect::to('/error')->send();
         }
     }
 

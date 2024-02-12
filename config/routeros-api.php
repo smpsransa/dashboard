@@ -19,6 +19,7 @@ return [
     'pass' => env('ROS_PASS', null),           // Password
     'port' => (int)env('ROS_PORT', 8728),           // RouterOS API port number for access (if not set use default or default with SSL if SSL enabled)
 
+
     /*
      |--------------------------------------------------------------------------
      | Change settings of stream

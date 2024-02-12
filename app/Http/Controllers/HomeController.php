@@ -13,7 +13,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', [
+            'except' => [
+                'error'
+            ]
+        ]);
     }
 
     /**
@@ -26,8 +30,9 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function hotspotError()
+    public function error()
     {
+        $this->middleware('guest');
         echo "Ok";
     }
 }
