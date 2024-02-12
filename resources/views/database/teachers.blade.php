@@ -17,8 +17,9 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>nama</th>
+            <th>ttl</th>
             <th>nip</th>
-            <th>NIS</th>
             <th>Alamat</th>
         </tr>
     </thead>
@@ -28,8 +29,13 @@
             <tr>
                 <td>{{ $i++ }}</td>
                 <td>{{ $teacher->name }}</td>
+                <td>{{ $teacher->born . ', ' . \Carbon\Carbon::parse($teacher->birth)->format('d/m/Y') }}</td>
                 <td>{{ $teacher->nip }}</td>
-                <td>{{ $teacher->address }}</td>
+                <td>
+                    @isset($teacher->class)
+                        {{ $teacher->class->name }}
+                    @endisset
+                </td>
             </tr>
         @endforeach
     </tbody>

@@ -32,6 +32,6 @@ class DbClass extends Model
 
     public function teacher()
     {
-        return $this->hasOne(DbTeacher::class);
+        return $this->belongsTo(DbTeacher::class);
     }
 }

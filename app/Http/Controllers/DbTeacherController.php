@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FileImportRequest;
 use App\Imports\DbTeachersImport;
+use App\Models\DbClass;
+use App\Models\DbStudent;
 use App\Models\DbTeacher;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -15,8 +17,8 @@ class DbTeacherController extends Controller
      */
     public function index()
     {
-        $teachers = DbTeacher::latest()->get();
-        // dd($teachers[0][2]);
+        $teachers = DbTeacher::all();
+        // dd($teachers[0]->class->name);
         return view('database.teachers', compact('teachers'));
     }
 

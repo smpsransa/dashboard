@@ -20,7 +20,6 @@ class DbTeacherSeeder extends Seeder
 
             DB::table('db_teachers')
                 ->insert([
-                    'class_id' => $index,
                     'name' => $faker->name($gender),
                     'gender' => $gender
                 ]);
